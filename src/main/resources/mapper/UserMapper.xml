@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="org.example.todolistserver.mapper.UserMapper">
+
+    <resultMap id="user" type="org.example.todolistserver.model.UserDO">
+        <result property="id" column="id" />
+        <result property="name" column="name" />
+        <result property="password" column="password" />
+    </resultMap>
+
+    <select id="select" parameterType="java.lang.String" resultType="org.example.todolistserver.model.UserDO">
+        SELECT
+            id, name, password
+        FROM user
+        WHERE name = #{name}
+    </select>
+
+    <insert id="insert" parameterType="org.example.todolistserver.model.UserDO">
+        INSERT INTO USER (name, password)
+        VALUES (#{name}, #{password})
+    </insert>
+</mapper>
